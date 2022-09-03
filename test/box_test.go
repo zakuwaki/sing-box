@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/sagernet/sing-box"
+	"github.com/sagernet/sing-box/adapter"
 	"github.com/sagernet/sing-box/option"
 	"github.com/sagernet/sing/common/bufio"
 	"github.com/sagernet/sing/common/debug"
@@ -17,13 +18,13 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func startInstance(t *testing.T, options option.Options) {
+func startInstance(t *testing.T, options option.Options) adapter.Box {
 	if debug.Enabled {
 		options.Log = &option.LogOptions{
 			Level: "trace",
 		}
 	}
-	var instance *box.Box
+	var instance adapter.Box
 	var err error
 	for retry := 0; retry < 3; retry++ {
 		instance, err = box.New(context.Background(), options)
@@ -39,6 +40,7 @@ func startInstance(t *testing.T, options option.Options) {
 	t.Cleanup(func() {
 		instance.Close()
 	})
+	return instance
 }
 
 func testSuit(t *testing.T, clientPort uint16, testPort uint16) {

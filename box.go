@@ -20,7 +20,7 @@ import (
 	F "github.com/sagernet/sing/common/format"
 )
 
-var _ adapter.Service = (*Box)(nil)
+var _ adapter.Box = (*Box)(nil)
 
 type Box struct {
 	createdAt   time.Time
@@ -34,7 +34,7 @@ type Box struct {
 	done        chan struct{}
 }
 
-func New(ctx context.Context, options option.Options) (*Box, error) {
+func New(ctx context.Context, options option.Options) (adapter.Box, error) {
 	createdAt := time.Now()
 	logOptions := common.PtrValueOrDefault(options.Log)
 
@@ -246,4 +246,8 @@ func (s *Box) Close() error {
 		s.clashServer,
 		common.PtrOrNil(s.logFile),
 	)
+}
+
+func (s *Box) Router() adapter.Router {
+	return s.router
 }
