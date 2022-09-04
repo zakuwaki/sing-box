@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+         <loc>.</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="."/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/"/>
+         
+    </url>
+    <url>
+         <loc>changelog/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="changelog/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/changelog/"/>
+         
+    </url>
+    <url>
+         <loc>features/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="features/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/features/"/>
+         
+    </url>
+    <url>
+         <loc>support/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="support/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/support/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/dns/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/dns/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/dns/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/dns/rule/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/dns/rule/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/dns/rule/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/dns/server/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/dns/server/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/dns/server/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/experimental/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/experimental/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/experimental/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/inbound/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/inbound/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/inbound/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/inbound/direct/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/inbound/direct/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/inbound/direct/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/inbound/http/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/inbound/http/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/inbound/http/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/inbound/hysteria/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/inbound/hysteria/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/inbound/hysteria/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/inbound/mixed/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/inbound/mixed/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/inbound/mixed/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/inbound/naive/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/inbound/naive/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/inbound/naive/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/inbound/redirect/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/inbound/redirect/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/inbound/redirect/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/inbound/shadowsocks/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/inbound/shadowsocks/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/inbound/shadowsocks/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/inbound/shadowtls/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/inbound/shadowtls/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/inbound/shadowtls/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/inbound/socks/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/inbound/socks/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/inbound/socks/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/inbound/tproxy/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/inbound/tproxy/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/inbound/tproxy/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/inbound/trojan/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/inbound/trojan/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/inbound/trojan/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/inbound/tun/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/inbound/tun/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/inbound/tun/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/inbound/vmess/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/inbound/vmess/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/inbound/vmess/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/log/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/log/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/log/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/outbound/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/outbound/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/outbound/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/outbound/block/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/outbound/block/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/outbound/block/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/outbound/direct/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/outbound/direct/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/outbound/direct/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/outbound/dns/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/outbound/dns/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/outbound/dns/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/outbound/http/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/outbound/http/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/outbound/http/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/outbound/hysteria/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/outbound/hysteria/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/outbound/hysteria/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/outbound/selector/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/outbound/selector/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/outbound/selector/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/outbound/shadowsocks/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/outbound/shadowsocks/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/outbound/shadowsocks/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/outbound/shadowtls/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/outbound/shadowtls/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/outbound/shadowtls/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/outbound/socks/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/outbound/socks/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/outbound/socks/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/outbound/ssh/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/outbound/ssh/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/outbound/ssh/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/outbound/tor/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/outbound/tor/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/outbound/tor/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/outbound/trojan/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/outbound/trojan/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/outbound/trojan/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/outbound/vmess/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/outbound/vmess/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/outbound/vmess/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/outbound/wireguard/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/outbound/wireguard/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/outbound/wireguard/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/route/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/route/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/route/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/route/geoip/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/route/geoip/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/route/geoip/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/route/geosite/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/route/geosite/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/route/geosite/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/route/rule/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/route/rule/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/route/rule/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/route/sniff/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/route/sniff/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/route/sniff/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/shared/dial/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/shared/dial/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/shared/dial/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/shared/listen/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/shared/listen/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/shared/listen/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/shared/multiplex/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/shared/multiplex/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/shared/multiplex/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/shared/tls/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/shared/tls/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/shared/tls/"/>
+         
+    </url>
+    <url>
+         <loc>configuration/shared/v2ray-transport/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="configuration/shared/v2ray-transport/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/configuration/shared/v2ray-transport/"/>
+         
+    </url>
+    <url>
+         <loc>contributing/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="contributing/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/contributing/"/>
+         
+    </url>
+    <url>
+         <loc>contributing/environment/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="contributing/environment/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/contributing/environment/"/>
+         
+    </url>
+    <url>
+         <loc>contributing/sub-projects/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="contributing/sub-projects/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/contributing/sub-projects/"/>
+         
+    </url>
+    <url>
+         <loc>examples/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="examples/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/examples/"/>
+         
+    </url>
+    <url>
+         <loc>examples/dns-hijack/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="examples/dns-hijack/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/examples/dns-hijack/"/>
+         
+    </url>
+    <url>
+         <loc>examples/linux-server-installation/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="examples/linux-server-installation/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/examples/linux-server-installation/"/>
+         
+    </url>
+    <url>
+         <loc>examples/shadowtls/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="examples/shadowtls/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/examples/shadowtls/"/>
+         
+    </url>
+    <url>
+         <loc>examples/ss-client/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="examples/ss-client/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/examples/ss-client/"/>
+         
+    </url>
+    <url>
+         <loc>examples/ss-server/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="examples/ss-server/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/examples/ss-server/"/>
+         
+    </url>
+    <url>
+         <loc>examples/ss-tun/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="examples/ss-tun/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/examples/ss-tun/"/>
+         
+    </url>
+    <url>
+         <loc>faq/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="faq/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/faq/"/>
+         
+    </url>
+    <url>
+         <loc>faq/known-issues/</loc>
+         <lastmod>2022-09-04</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="faq/known-issues/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/faq/known-issues/"/>
+         
+    </url>
+</urlset>
