@@ -1,23 +1,33 @@
 package main
 
 import (
+	"context"
+	"net"
+	"net/http"
+	"os"
 	"testing"
+
 	"github.com/sagernet/sing-box/common/tls"
 	"github.com/sagernet/sing-box/option"
-	N "github.com/sagernet/sing/common/network"
-	"github.com/stretchr/testify/require"
-	"net/http"
-	"net"
-	"context"
 	M "github.com/sagernet/sing/common/metadata"
-	"os"
+	N "github.com/sagernet/sing/common/network"
+
+	"github.com/stretchr/testify/require"
 )
 
 func TestECH(t *testing.T) {
-	dialer, err := tls.NewDialerFromOptions(N.SystemDialer, "tls-ech.dev", option.OutboundTLSOptions{
+	instance := startInstance(t, option.Options{
+		DNS: &option.DNSOptions{
+			Servers: []option.DNSServerOptions{
+				{
+					Address: "tls://1.1.1.1",
+				},
+			},
+		},
+	})
+	dialer, err := tls.NewDialerFromOptions(instance.Router(), N.SystemDialer, "tls-ech.dev", option.OutboundTLSOptions{
 		ECH: &option.OutboundECHOptions{
 			Enabled: true,
-			Config:  "AEn+DQBFKwAgACABWIHUGj4u+PIggYXcR5JF0gYk3dCRioBW8uJq9H4mKAAIAAEAAQABAANAEnB1YmxpYy50bHMtZWNoLmRldgAA",
 		},
 	})
 	require.NoError(t, err)

@@ -3,15 +3,21 @@
 package tls
 
 import (
+	"context"
 	"crypto/x509"
+	"encoding/base64"
 	"net"
 	"net/netip"
 	"os"
 
+	"github.com/sagernet/sing-box/adapter"
 	"github.com/sagernet/sing-box/option"
 	"github.com/sagernet/sing-box/transport/cloudflaretls"
+	"github.com/sagernet/sing-dns"
 	E "github.com/sagernet/sing/common/exceptions"
-	"encoding/base64"
+
+	mDNS "github.com/miekg/dns"
+	"golang.org/x/net/dns/dnsmessage"
 )
 
 type echClientConfig struct {
@@ -26,7 +32,7 @@ func (e *echClientConfig) Client(conn net.Conn) Conn {
 	return tls.Client(conn, e.config)
 }
 
-func newECHClient(serverAddress string, options option.OutboundTLSOptions) (Config, error) {
+func newECHClient(router adapter.Router, serverAddress string, options option.OutboundTLSOptions) (Config, error) {
 	var serverName string
 	if options.ServerName != "" {
 		serverName = options.ServerName
@@ -123,6 +129,60 @@ func newECHClient(serverAddress string, options option.OutboundTLSOptions) (Conf
 			return nil, err
 		}
 		tlsConfig.ClientECHConfigs = clientConfig
+	} else {
+		tlsConfig.GetClientECHConfigs = fetchECHClientConfig(router)
 	}
 	return &echClientConfig{&tlsConfig}, nil
+}
+
+const typeHTTPS = 65
+
+func fetchECHClientConfig(router adapter.Router) func(ctx context.Context, serverName string) ([]tls.ECHConfig, error) {
+	return func(ctx context.Context, serverName string) ([]tls.ECHConfig, error) {
+		message := &dnsmessage.Message{
+			Header: dnsmessage.Header{
+				RecursionDesired: true,
+			},
+			Questions: []dnsmessage.Question{
+				{
+					Name:  dnsmessage.MustNewName(serverName + "."),
+					Type:  typeHTTPS,
+					Class: dnsmessage.ClassINET,
+				},
+			},
+		}
+		response, err := router.Exchange(ctx, message)
+		if err != nil {
+			return nil, err
+		}
+		if response.RCode != dnsmessage.RCodeSuccess {
+			return nil, dns.RCodeError(response.RCode)
+		}
+		content, err := response.Pack()
+		if err != nil {
+			return nil, err
+		}
+		var mMsg mDNS.Msg
+		err = mMsg.Unpack(content)
+		if err != nil {
+			return nil, err
+		}
+		for _, rr := range mMsg.Answer {
+			switch resource := rr.(type) {
+			case *mDNS.HTTPS:
+				for _, value := range resource.Value {
+					if value.Key().String() == "ech" {
+						echConfig, err := base64.StdEncoding.DecodeString(value.String())
+						if err != nil {
+							return nil, E.Cause(err, "decode ECH config")
+						}
+						return tls.UnmarshalECHConfigs(echConfig)
+					}
+				}
+			default:
+				return nil, E.New("unknown resource record type: ", resource.Header().Rrtype)
+			}
+		}
+		return nil, E.New("no ECH config found")
+	}
 }

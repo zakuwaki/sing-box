@@ -47,7 +47,7 @@ func NewHysteria(ctx context.Context, router adapter.Router, logger log.ContextL
 	if options.TLS == nil || !options.TLS.Enabled {
 		return nil, C.ErrTLSRequired
 	}
-	abstractTLSConfig, err := tls.NewClient(options.Server, common.PtrValueOrDefault(options.TLS))
+	abstractTLSConfig, err := tls.NewClient(router, options.Server, common.PtrValueOrDefault(options.TLS))
 	if err != nil {
 		return nil, err
 	}

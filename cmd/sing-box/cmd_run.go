@@ -9,6 +9,7 @@ import (
 	"syscall"
 
 	"github.com/sagernet/sing-box"
+	"github.com/sagernet/sing-box/adapter"
 	"github.com/sagernet/sing-box/common/json"
 	"github.com/sagernet/sing-box/log"
 	"github.com/sagernet/sing-box/option"
@@ -53,7 +54,7 @@ func readConfig() (option.Options, error) {
 	return options, nil
 }
 
-func create() (*box.Box, context.CancelFunc, error) {
+func create() (adapter.Box, context.CancelFunc, error) {
 	options, err := readConfig()
 	if err != nil {
 		return nil, nil, err

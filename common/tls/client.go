@@ -5,23 +5,24 @@ import (
 	"net"
 	"os"
 
+	"github.com/sagernet/sing-box/adapter"
 	C "github.com/sagernet/sing-box/constant"
 	"github.com/sagernet/sing-box/option"
 	M "github.com/sagernet/sing/common/metadata"
 	N "github.com/sagernet/sing/common/network"
 )
 
-func NewDialerFromOptions(dialer N.Dialer, serverAddress string, options option.OutboundTLSOptions) (N.Dialer, error) {
-	config, err := NewClient(serverAddress, options)
+func NewDialerFromOptions(router adapter.Router, dialer N.Dialer, serverAddress string, options option.OutboundTLSOptions) (N.Dialer, error) {
+	config, err := NewClient(router, serverAddress, options)
 	if err != nil {
 		return nil, err
 	}
 	return NewDialer(dialer, config), nil
 }
 
-func NewClient(serverAddress string, options option.OutboundTLSOptions) (Config, error) {
+func NewClient(router adapter.Router, serverAddress string, options option.OutboundTLSOptions) (Config, error) {
 	if options.ECH != nil && options.ECH.Enabled {
-		return newECHClient(serverAddress, options)
+		return newECHClient(router, serverAddress, options)
 	} else {
 		return newStdClient(serverAddress, options)
 	}
