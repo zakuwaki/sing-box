@@ -3,6 +3,7 @@ package limiter
 import (
 	"context"
 	"net"
+	"time"
 
 	"golang.org/x/time/rate"
 )
@@ -10,9 +11,10 @@ import (
 type limiter struct {
 	downloadLimiter *rate.Limiter
 	uploadLimiter   *rate.Limiter
+	timeout         time.Duration
 }
 
-func newLimiter(download, upload uint64) *limiter {
+func newLimiter(download, upload uint64, timeout time.Duration) *limiter {
 	var downloadLimiter, uploadLimiter *rate.Limiter
 	if download > 0 {
 		downloadLimiter = rate.NewLimiter(rate.Limit(float64(download)), int(download))
@@ -20,7 +22,7 @@ func newLimiter(download, upload uint64) *limiter {
 	if upload > 0 {
 		uploadLimiter = rate.NewLimiter(rate.Limit(float64(upload)), int(upload))
 	}
-	return &limiter{downloadLimiter: downloadLimiter, uploadLimiter: uploadLimiter}
+	return &limiter{downloadLimiter: downloadLimiter, uploadLimiter: uploadLimiter, timeout: timeout}
 }
 
 type connWithLimiter struct {
@@ -30,9 +32,21 @@ type connWithLimiter struct {
 }
 
 func (conn *connWithLimiter) Read(p []byte) (n int, err error) {
-	if conn.limiter == nil || conn.limiter.uploadLimiter == nil {
-		return conn.Conn.Read(p)
+	if conn.limiter != nil {
+		if conn.limiter.timeout > 0 {
+			err = conn.Conn.SetDeadline(time.Now().Add(conn.limiter.timeout))
+			if err != nil {
+				return
+			}
+		}
+		if conn.limiter.uploadLimiter != nil {
+			return conn.readWithLimiter(p)
+		}
 	}
+	return conn.Conn.Read(p)
+}
+
+func (conn *connWithLimiter) readWithLimiter(p []byte) (n int, err error) {
 	b := conn.limiter.uploadLimiter.Burst()
 	if b < len(p) {
 		p = p[:b]
@@ -49,9 +63,21 @@ func (conn *connWithLimiter) Read(p []byte) (n int, err error) {
 }
 
 func (conn *connWithLimiter) Write(p []byte) (n int, err error) {
-	if conn.limiter == nil || conn.limiter.downloadLimiter == nil {
-		return conn.Conn.Write(p)
+	if conn.limiter != nil {
+		if conn.limiter.timeout > 0 {
+			err = conn.Conn.SetDeadline(time.Now().Add(conn.limiter.timeout))
+			if err != nil {
+				return
+			}
+		}
+		if conn.limiter.downloadLimiter != nil {
+			return conn.writeWithLimiter(p)
+		}
 	}
+	return conn.Conn.Write(p)
+}
+
+func (conn *connWithLimiter) writeWithLimiter(p []byte) (n int, err error) {
 	var nn int
 	b := conn.limiter.downloadLimiter.Burst()
 	for {

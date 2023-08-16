@@ -4,6 +4,7 @@ type Limiter struct {
 	Tag                 string           `json:"tag"`
 	Download            string           `json:"download,omitempty"`
 	Upload              string           `json:"upload,omitempty"`
+	Timeout             string           `json:"timeout,omitempty"`
 	AuthUser            Listable[string] `json:"auth_user,omitempty"`
 	AuthUserIndependent bool             `json:"auth_user_independent,omitempty"`
 	Inbound             Listable[string] `json:"inbound,omitempty"`
