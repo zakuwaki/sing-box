@@ -28,8 +28,11 @@ func (s *Server) checkAndDownloadExternalUI() {
 		os.MkdirAll(s.externalUI, 0o755)
 	}
 	if len(entries) == 0 {
-		err = s.downloadExternalUI()
-		if err != nil {
+		for attempts := 0; attempts < 3; attempts++ {
+			err = s.downloadExternalUI()
+			if err == nil {
+				break
+			}
 			s.logger.Error("download external ui error: ", err)
 		}
 	}
