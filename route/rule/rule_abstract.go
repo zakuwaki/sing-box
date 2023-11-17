@@ -21,6 +21,7 @@ type abstractDefaultRule struct {
 	ruleSetItem             RuleItem
 	invert                  bool
 	action                  adapter.RuleAction
+	limiters                []string
 }
 
 func (r *abstractDefaultRule) Type() string {
@@ -154,6 +155,10 @@ func (r *abstractDefaultRule) Action() adapter.RuleAction {
 	return r.action
 }
 
+func (r *abstractDefaultRule) Limiters() []string {
+	return r.limiters
+}
+
 func (r *abstractDefaultRule) String() string {
 	if !r.invert {
 		return strings.Join(F.MapToString(r.allItems), " ")
@@ -163,10 +168,11 @@ func (r *abstractDefaultRule) String() string {
 }
 
 type abstractLogicalRule struct {
-	rules  []adapter.HeadlessRule
-	mode   string
-	invert bool
-	action adapter.RuleAction
+	rules    []adapter.HeadlessRule
+	mode     string
+	invert   bool
+	action   adapter.RuleAction
+	limiters []string
 }
 
 func (r *abstractLogicalRule) Type() string {
@@ -233,6 +239,10 @@ func (r *abstractLogicalRule) Match(metadata *adapter.InboundContext) bool {
 
 func (r *abstractLogicalRule) Action() adapter.RuleAction {
 	return r.action
+}
+
+func (r *abstractLogicalRule) Limiters() []string {
+	return r.limiters
 }
 
 func (r *abstractLogicalRule) String() string {

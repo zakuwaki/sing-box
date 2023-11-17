@@ -15,6 +15,7 @@ type Rule interface {
 	Type() string
 	UpdateGeosite() error
 	Action() RuleAction
+	Limiters() []string
 }
 
 type DNSRule interface {
