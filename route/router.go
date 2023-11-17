@@ -23,6 +23,7 @@ import (
 	"github.com/sagernet/sing-box/common/taskmonitor"
 	C "github.com/sagernet/sing-box/constant"
 	"github.com/sagernet/sing-box/experimental/libbox/platform"
+	"github.com/sagernet/sing-box/limiter"
 	"github.com/sagernet/sing-box/log"
 	"github.com/sagernet/sing-box/option"
 	"github.com/sagernet/sing-box/outbound"
@@ -94,6 +95,7 @@ type Router struct {
 	pauseManager                       pause.Manager
 	clashServer                        adapter.ClashServer
 	v2rayServer                        adapter.V2RayServer
+	limiterManager                     limiter.Manager
 	platformInterface                  platform.Interface
 	needWIFIState                      bool
 	needPackageManager                 bool
@@ -586,6 +588,9 @@ func (r *Router) Start() error {
 			return E.Cause(err, "initialize time service")
 		}
 	}
+	if limiterManger := service.FromContext[limiter.Manager](r.ctx); limiterManger != nil {
+		r.limiterManager = limiterManger
+	}
 	return nil
 }
 
@@ -926,6 +931,11 @@ func (r *Router) RouteConnection(ctx context.Context, conn net.Conn, metadata ad
 	if !common.Contains(detour.Network(), N.NetworkTCP) {
 		return E.New("missing supported outbound, closing connection")
 	}
+
+	if r.limiterManager != nil {
+		conn = r.limiterManager.NewConnWithLimiters(ctx, conn, &metadata, matchedRule)
+	}
+
 	if r.clashServer != nil {
 		trackerConn, tracker := r.clashServer.RoutedConnection(ctx, conn, metadata, matchedRule)
 		defer tracker.Leave()

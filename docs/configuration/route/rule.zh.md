@@ -127,14 +127,22 @@ icon: material/alert-decagram
         "rule_set_ipcidr_match_source": false,
         "rule_set_ip_cidr_match_source": false,
         "invert": false,
-        "outbound": "direct"
+        "outbound": "direct",
+        "limiter": [
+          "limiter-a",
+          "limiter-b"
+        ]
       },
       {
         "type": "logical",
         "mode": "and",
         "rules": [],
         "invert": false,
-        "outbound": "direct"
+        "outbound": "direct",
+        "limiter": [
+          "limiter-a",
+          "limiter-b"
+        ]
       }
     ]
   }
@@ -360,6 +368,10 @@ icon: material/alert-decagram
 ==必填==
 
 目标出站的标签。
+
+#### limiter
+
+[限速](/zh/configuration/inbound) 标签。对所有匹配该规则的连接生效。
 
 ### 逻辑字段
 

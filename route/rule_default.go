@@ -234,6 +234,9 @@ func NewDefaultRule(ctx context.Context, router adapter.Router, logger log.Conte
 		rule.items = append(rule.items, item)
 		rule.allItems = append(rule.allItems, item)
 	}
+	if len(options.Limiter) > 0 {
+		rule.limiters = append(rule.limiters, options.Limiter...)
+	}
 	return rule, nil
 }
 
@@ -265,6 +268,9 @@ func NewLogicalRule(ctx context.Context, router adapter.Router, logger log.Conte
 			return nil, E.Cause(err, "sub rule[", i, "]")
 		}
 		r.rules[i] = rule
+	}
+	if len(options.Limiter) > 0 {
+		r.limiters = append(r.limiters, options.Limiter...)
 	}
 	return r, nil
 }

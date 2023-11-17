@@ -99,6 +99,7 @@ type DefaultRule struct {
 	RuleSetIPCIDRMatchSource bool             `json:"rule_set_ip_cidr_match_source,omitempty"`
 	Invert                   bool             `json:"invert,omitempty"`
 	Outbound                 string           `json:"outbound,omitempty"`
+	Limiter                  Listable[string] `json:"limiter,omitempty"`
 
 	// Deprecated: renamed to rule_set_ip_cidr_match_source
 	Deprecated_RulesetIPCIDRMatchSource bool `json:"rule_set_ipcidr_match_source,omitempty"`
@@ -112,10 +113,11 @@ func (r *DefaultRule) IsValid() bool {
 }
 
 type LogicalRule struct {
-	Mode     string `json:"mode"`
-	Rules    []Rule `json:"rules,omitempty"`
-	Invert   bool   `json:"invert,omitempty"`
-	Outbound string `json:"outbound,omitempty"`
+	Mode     string           `json:"mode"`
+	Rules    []Rule           `json:"rules,omitempty"`
+	Invert   bool             `json:"invert,omitempty"`
+	Outbound string           `json:"outbound,omitempty"`
+	Limiter  Listable[string] `json:"limiter,omitempty"`
 }
 
 func (r LogicalRule) IsValid() bool {
