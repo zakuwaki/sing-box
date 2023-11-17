@@ -89,6 +89,7 @@ type Rule interface {
 	Type() string
 	UpdateGeosite() error
 	Outbound() string
+	Limiters() []string
 }
 
 type DNSRule interface {
