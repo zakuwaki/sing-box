@@ -1110,6 +1110,11 @@ func (r *Router) RoutePacketConnection(ctx context.Context, conn N.PacketConn, m
 	if !common.Contains(detour.Network(), N.NetworkUDP) {
 		return E.New("missing supported outbound, closing packet connection")
 	}
+
+	if r.limiterManager != nil {
+		conn = r.limiterManager.NewPacketConnWithLimiters(ctx, conn, &metadata, matchedRule)
+	}
+
 	if r.clashServer != nil {
 		trackerConn, tracker := r.clashServer.RoutedPacketConnection(ctx, conn, metadata, matchedRule)
 		defer tracker.Leave()

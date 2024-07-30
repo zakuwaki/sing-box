@@ -11,6 +11,7 @@ import (
 	"github.com/sagernet/sing-box/log"
 	"github.com/sagernet/sing-box/option"
 	E "github.com/sagernet/sing/common/exceptions"
+	N "github.com/sagernet/sing/common/network"
 	"github.com/sagernet/sing/service"
 )
 
@@ -116,6 +117,29 @@ func (m *defaultManager) NewConnWithLimiters(ctx context.Context, conn net.Conn,
 	}
 	for _, limiter := range limiters {
 		conn = &connWithLimiter{Conn: conn, limiter: limiter, ctx: ctx}
+	}
+	return conn
+}
+
+func (m *defaultManager) NewPacketConnWithLimiters(ctx context.Context, conn N.PacketConn, metadata *adapter.InboundContext, rule adapter.Rule) N.PacketConn {
+	var limiters []*limiter
+	if rule != nil {
+		for _, tag := range rule.Limiters() {
+			if v, ok := m.mp[limiterKey{prefixTag, tag}]; ok {
+				limiters = append(limiters, v)
+			}
+		}
+	}
+	if metadata != nil {
+		if v, ok := m.mp[limiterKey{prefixUser, metadata.User}]; ok {
+			limiters = append(limiters, v)
+		}
+		if v, ok := m.mp[limiterKey{prefixInbound, metadata.Inbound}]; ok {
+			limiters = append(limiters, v)
+		}
+	}
+	for _, limiter := range limiters {
+		conn = &packetConnWithLimiter{PacketConn: conn, limiter: limiter, ctx: ctx}
 	}
 	return conn
 }
