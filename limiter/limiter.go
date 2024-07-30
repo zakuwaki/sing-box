@@ -5,6 +5,9 @@ import (
 	"net"
 	"time"
 
+	"github.com/sagernet/sing/common/buf"
+	M "github.com/sagernet/sing/common/metadata"
+	N "github.com/sagernet/sing/common/network"
 	"golang.org/x/time/rate"
 )
 
@@ -29,6 +32,10 @@ type connWithLimiter struct {
 	net.Conn
 	limiter *limiter
 	ctx     context.Context
+}
+
+func (conn *connWithLimiter) Upstream() any {
+	return conn.Conn
 }
 
 func (conn *connWithLimiter) Read(p []byte) (n int, err error) {
@@ -98,6 +105,70 @@ func (conn *connWithLimiter) writeWithLimiter(p []byte) (n int, err error) {
 			return
 		}
 		p = p[end:]
+	}
+	return
+}
+
+type packetConnWithLimiter struct {
+	N.PacketConn
+	limiter *limiter
+	ctx     context.Context
+}
+
+func (conn *packetConnWithLimiter) Upstream() any {
+	return conn.PacketConn
+}
+
+func (conn *packetConnWithLimiter) ReadPacket(buffer *buf.Buffer) (destination M.Socksaddr, err error) {
+	if conn.limiter != nil {
+		if conn.limiter.timeout > 0 {
+			err = conn.PacketConn.SetDeadline(time.Now().Add(conn.limiter.timeout))
+			if err != nil {
+				return
+			}
+		}
+		if conn.limiter.uploadLimiter != nil {
+			return conn.readWithLimiter(buffer)
+		}
+	}
+	return conn.PacketConn.ReadPacket(buffer)
+}
+
+func (conn *packetConnWithLimiter) readWithLimiter(buffer *buf.Buffer) (destination M.Socksaddr, err error) {
+	destination, err = conn.PacketConn.ReadPacket(buffer)
+	if err != nil {
+		return
+	}
+	err = conn.limiter.uploadLimiter.WaitN(conn.ctx, buffer.Len())
+	if err != nil {
+		return
+	}
+	return
+}
+
+func (conn *packetConnWithLimiter) WritePacket(buffer *buf.Buffer, destination M.Socksaddr) (err error) {
+	if conn.limiter != nil {
+		if conn.limiter.timeout > 0 {
+			err = conn.PacketConn.SetDeadline(time.Now().Add(conn.limiter.timeout))
+			if err != nil {
+				return
+			}
+		}
+		if conn.limiter.downloadLimiter != nil {
+			return conn.writePacketWithLimiter(buffer, destination)
+		}
+	}
+	return conn.PacketConn.WritePacket(buffer, destination)
+}
+
+func (conn *packetConnWithLimiter) writePacketWithLimiter(buffer *buf.Buffer, destination M.Socksaddr) (err error) {
+	err = conn.limiter.downloadLimiter.WaitN(conn.ctx, buffer.Len())
+	if err != nil {
+		return
+	}
+	err = conn.PacketConn.WritePacket(buffer, destination)
+	if err != nil {
+		return
 	}
 	return
 }
