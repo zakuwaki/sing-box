@@ -13,6 +13,7 @@ sing-box uses JSON for configuration files.
   "endpoints": [],
   "inbounds": [],
   "outbounds": [],
+  "limiters": [],
   "route": {},
   "services": [],
   "experimental": {}
@@ -30,6 +31,7 @@ sing-box uses JSON for configuration files.
 | `endpoints`    | [Endpoint](./endpoint/)         |
 | `inbounds`     | [Inbound](./inbound/)           |
 | `outbounds`    | [Outbound](./outbound/)         |
+| `limiters`     | [Limiter](./limiter/)           |
 | `route`        | [Route](./route/)               |
 | `services`     | [Service](./service/)           |
 | `experimental` | [Experimental](./experimental/) |
